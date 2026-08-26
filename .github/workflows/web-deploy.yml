@@ -23,6 +23,13 @@ concurrency:
 
 jobs:
   deploy:
+    # Must match the UNION of every inner job's own permissions in the reusable
+    # web-deploy.yml, not just default (GitHub validates the whole chain at
+    # startup) -- packages:read is for the build job's pnpm install of private
+    # @qnsc-vn/* packages.
+    permissions:
+      contents: read
+      packages: read
     uses: QNSC-VN/qnsc-ci/.github/workflows/web-deploy.yml@v1.9.0
     with:
       product: qnsc-landing

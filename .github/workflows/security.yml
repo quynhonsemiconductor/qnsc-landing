@@ -9,7 +9,8 @@
 # as the rally/opshub products, so posture is uniform across the org.
 #
 # actions-security (zizmor) replaces Code Scanning Default Setup's
-# `Analyze (actions)`. Blocking — the initial rollout ran clean, no findings.
+# `Analyze (actions)`. Blocking, after triaging the initial findings (see the
+# job's own comments for the artipacked/excessive-permissions fixes applied).
 # =============================================================================
 name: Security · Scan
 
@@ -23,7 +24,11 @@ on:
 
 permissions:
   contents: read
-  security-events: write # SARIF upload (no-op on the free plan, lights up after GHAS)
+  # Ceiling for the reusable's SARIF-upload job, which declares security-events:write
+  # itself -- a called workflow's job permissions can only be REDUCED, not elevated,
+  # above this caller's top-level grant, and GitHub validates the whole chain at
+  # startup -- so this must stay even though no step in THIS file uses it directly.
+  security-events: write # zizmor: ignore[excessive-permissions] ceiling for reusable's SARIF job
   packages: read # ceiling for the reusable Trivy job's `packages: read`; a called
   # workflow's job permissions can only be REDUCED, not elevated, above the caller's
   # top-level grant. Trivy is skipped here (scan_container: false), but GitHub validates
@@ -38,7 +43,7 @@ jobs:
       product: qnsc-landing
       scan_container: false # no Dockerfile — skip Trivy, keep Semgrep + Gitleaks + osv
       node_version: '22'
-    secrets: inherit
+    # security.yml declares no secrets -- nothing to pass (no secrets: inherit).
 
   actions-security:
     permissions:

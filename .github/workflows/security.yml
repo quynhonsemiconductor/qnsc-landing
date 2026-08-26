@@ -7,6 +7,10 @@
 # Gitleaks (secrets, MIT CLI) and osv-scanner (dependency CVEs, replaces
 # dependency-review) still run source-based. This gives the same security gate
 # as the rally/opshub products, so posture is uniform across the org.
+#
+# actions-security (zizmor) replaces Code Scanning Default Setup's
+# `Analyze (actions)`. Non-blocking on first rollout; flip `blocking: true`
+# after triaging.
 # =============================================================================
 name: Security · Scan
 
@@ -21,6 +25,12 @@ on:
 permissions:
   contents: read
   security-events: write # SARIF upload (no-op on the free plan, lights up after GHAS)
+  packages: read # ceiling for the reusable Trivy job's `packages: read`; a called
+  # workflow's job permissions can only be REDUCED, not elevated, above the caller's
+  # top-level grant. Trivy is skipped here (scan_container: false), but GitHub validates
+  # every reusable job's permission ceiling at STARTUP before evaluating `if:`, so this
+  # must be present or the whole run fails with startup_failure. (Confirmed root cause
+  # of the recurring Security · Scan startup_failure.)
 
 jobs:
   security:
@@ -30,3 +40,9 @@ jobs:
       scan_container: false # no Dockerfile — skip Trivy, keep Semgrep + Gitleaks + osv
       node_version: '22'
     secrets: inherit
+
+  actions-security:
+    permissions:
+      contents: read
+      security-events: write
+    uses: QNSC-VN/qnsc-ci/.github/workflows/actions-security.yml@v1

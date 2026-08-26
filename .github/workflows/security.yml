@@ -9,8 +9,7 @@
 # as the rally/opshub products, so posture is uniform across the org.
 #
 # actions-security (zizmor) replaces Code Scanning Default Setup's
-# `Analyze (actions)`. Non-blocking on first rollout; flip `blocking: true`
-# after triaging.
+# `Analyze (actions)`. Blocking — the initial rollout ran clean, no findings.
 # =============================================================================
 name: Security · Scan
 
@@ -46,3 +45,5 @@ jobs:
       contents: read
       security-events: write
     uses: QNSC-VN/qnsc-ci/.github/workflows/actions-security.yml@v1
+    with:
+      blocking: true

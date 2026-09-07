@@ -103,8 +103,8 @@ Three workflows, all pre-merge gates (see `.github/workflows/`):
 - `security.yml` — Gitleaks secret scan, dependency review, CodeQL SAST
 - `release.yml` — Release Please changelog/semver bookkeeping
 
-Reuses the shared [`QNSC-VN/qnsc-ci`](https://github.com/QNSC-VN/qnsc-ci)
-composite actions library used by `rally` and `opshub` (just the Node/pnpm
+Reuses the shared [`quynhonsemiconductor/ci`](https://github.com/quynhonsemiconductor/ci)
+composite actions library used by `rova` and `opshub` (just the Node/pnpm
 setup action — the AWS-specific actions don't apply to a Cloudflare-hosted repo).
 
 ## License

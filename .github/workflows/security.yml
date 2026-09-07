@@ -1,12 +1,12 @@
 # =============================================================================
-# Security — thin caller of the shared reusable suite (qnsc-ci).
+# Security — thin caller of the shared reusable suite (ci).
 #
 # qnsc-landing is Cloudflare-native (Astro static + one Pages Function, no
 # Dockerfile), so it calls the shared workflow with `scan_container: false`:
 # the Trivy container-CVE job is skipped while Semgrep (SAST, replaces CodeQL),
 # Gitleaks (secrets, MIT CLI) and osv-scanner (dependency CVEs, replaces
 # dependency-review) still run source-based. This gives the same security gate
-# as the rally/opshub products, so posture is uniform across the org.
+# as the rova/opshub products, so posture is uniform across the org.
 #
 # actions-security (zizmor) replaces Code Scanning Default Setup's
 # `Analyze (actions)`. Blocking, after triaging the initial findings (see the
@@ -38,7 +38,7 @@ permissions:
 
 jobs:
   security:
-    uses: QNSC-VN/qnsc-ci/.github/workflows/security.yml@v1.9.0
+    uses: quynhonsemiconductor/ci/.github/workflows/security.yml@v1.9.0
     with:
       product: qnsc-landing
       scan_container: false # no Dockerfile — skip Trivy, keep Semgrep + Gitleaks + osv
@@ -49,6 +49,6 @@ jobs:
     permissions:
       contents: read
       security-events: write
-    uses: QNSC-VN/qnsc-ci/.github/workflows/actions-security.yml@v1
+    uses: quynhonsemiconductor/ci/.github/workflows/actions-security.yml@v1
     with:
       blocking: true

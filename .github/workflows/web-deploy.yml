@@ -30,7 +30,7 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: quynhonsemiconductor/ci/.github/workflows/web-deploy.yml@v1.9.0
+    uses: quynhonsemiconductor/ci/.github/workflows/web-deploy.yml@v1
     with:
       product: qnsc-landing
       build_command: pnpm build

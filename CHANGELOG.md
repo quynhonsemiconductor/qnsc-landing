@@ -1,5 +1,24 @@
 # Changelog
 
+## [0.1.2](https://github.com/quynhonsemiconductor/qnsc-landing/compare/qnsc-landingv0.1.1...qnsc-landingv0.1.2) (2026-09-10)
+
+
+### 🐛 Bug Fixes
+
+* **ci:** run CI on stacked pull requests, not only PRs aimed at main ([#65](https://github.com/quynhonsemiconductor/qnsc-landing/issues/65)) ([257eee2](https://github.com/quynhonsemiconductor/qnsc-landing/commit/257eee28cfd5da9da330b2963fc20081bcaa4278))
+* **security:** resolve actions-security (zizmor) findings ([#48](https://github.com/quynhonsemiconductor/qnsc-landing/issues/48)) ([019c37f](https://github.com/quynhonsemiconductor/qnsc-landing/commit/019c37f084d22207149f0b38b3c29a4846fe5026))
+
+
+### ♻️ Refactors
+
+* **ci:** move the PR-title check into its own workflow ([#54](https://github.com/quynhonsemiconductor/qnsc-landing/issues/54)) ([3db4d93](https://github.com/quynhonsemiconductor/qnsc-landing/commit/3db4d934e89ff0b762ab994dc8306403ff827646))
+
+
+### 🔒 Security
+
+* **ci:** arm gitleaks — the config was replacing the default ruleset ([#64](https://github.com/quynhonsemiconductor/qnsc-landing/issues/64)) ([81ec345](https://github.com/quynhonsemiconductor/qnsc-landing/commit/81ec345929da4ed95564f8c8d327daa3c72e1d2e))
+* **deps:** patch the astro AVIF RCE, clear 13 findings, and enforce osv ([#59](https://github.com/quynhonsemiconductor/qnsc-landing/issues/59)) ([33d1639](https://github.com/quynhonsemiconductor/qnsc-landing/commit/33d163992524756080bf86722ee04f639b6a59d6))
+
 ## [0.1.1](https://github.com/QNSC-VN/qnsc-landing/compare/qnsc-landingv0.1.0...qnsc-landingv0.1.1) (2026-07-18)
 
 

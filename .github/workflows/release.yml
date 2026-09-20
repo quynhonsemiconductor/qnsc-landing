@@ -6,7 +6,7 @@
 # web-deploy.yml already runs on every push to main. This workflow exists purely
 # for changelog + semver bookkeeping on a site that ships continuously.
 #
-# Requires: RELEASE_BOT_APP_ID (org var) + RELEASE_BOT_PRIVATE_KEY (org secret).
+# Requires: QNSC_AUTOMATION_APP_ID (org var) + QNSC_AUTOMATION_PRIVATE_KEY (org secret).
 # =============================================================================
 name: Release
 
@@ -25,7 +25,7 @@ permissions:
 jobs:
   # Delegate to the shared reusable so pinning/behaviour stays in one place
   # (quynhonsemiconductor/ci). config_file defaults to release-please-config.json.
-  # No secrets passed: this repo has no RELEASE_BOT_PRIVATE_KEY, so the reusable
+  # No secrets passed: this repo has no QNSC_AUTOMATION_PRIVATE_KEY, so the reusable
   # falls back to github.token (avoids `secrets: inherit` least-privilege risk).
   release:
     uses: quynhonsemiconductor/ci/.github/workflows/release-please.yml@v1

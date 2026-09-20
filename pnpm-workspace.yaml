@@ -1,17 +1,3 @@
-# pnpm workspace config. qnsc-landing is a single package, so there is no
-# `packages:` list — this file exists for the two blocks below.
-
-# Transitive CVE floors. Every entry here is a package this repo does NOT declare:
-# it arrives under a dev tool, and the tool's own declared range already admits the
-# fix, so the lockfile was simply resolved before the advisory published. A floor
-# rather than an exact pin, except where a cross-major force would break a consumer.
-#
-# WHY THIS BLOCK EXISTS AT ALL. Until now this repo had no `overrides:` and its
-# `security / Dependency CVE scan (osv-scanner)` ran REPORT-ONLY (the shared
-# workflow's `osv_blocking` defaults to false and nothing set it), so thirteen
-# findings — including an unpatched CVSS 9.8 — reported green for weeks. `osv_blocking`
-# is set to true in the same change that clears them; a scanner nobody is required to
-# read is not a control.
 overrides:
   # GHSA-rgj7-g3m4-5g8c (CVSS 8.9) and GHSA-f88m-g3jw-g9cj (CVSS 7.0) — sharp inherits
   # libheif and libvips vulnerabilities through its bundled native binaries. Fixed in
@@ -43,7 +29,7 @@ overrides:
   # so the zero-size path is not reachable here. Listed anyway because the entry above
   # does not guarantee which nanoid the older postcss brings. NOT forced across majors:
   # postcss declares ^3.3.11 and nanoid 4.x+ is ESM-only.
-  'nanoid@>=3.0.0 <3.3.18': '3.3.18'
+  'nanoid@>=3.0.0 <3.3.18': '3.3.19'
   # GHSA-5jgf-p345-68v8 and its siblings (CVSS 7.5 each) — host confusion and SSRF in
   # the same URI parser: failed IDN canonicalisation, a backslash authority introducer,
   # malformed and repeated authority forms, percent-encoded schemes. Fixed in 3.1.6.

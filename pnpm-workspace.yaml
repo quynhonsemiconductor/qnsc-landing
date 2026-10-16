@@ -59,7 +59,7 @@ overrides:
   #
   # Dev-only, via minimatch. A leaf utility with no API surface to speak of, and the
   # advisory range spans every published major, so the whole tree moves to one copy.
-  'brace-expansion': '5.0.9'
+  'brace-expansion': '5.0.12'
 
 # pnpm 11 refuses to run a package's postinstall unless it is named here, and exits 1
 # with ERR_PNPM_IGNORED_BUILDS if the decision is unmade — which blocks every script in

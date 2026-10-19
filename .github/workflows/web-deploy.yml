@@ -36,6 +36,7 @@ jobs:
       build_command: pnpm build
       web_dist_path: dist
       single_environment: production
+      pnpm_version: '10.34.7'
     # Least-privilege: pass only what the reusable declares (no `secrets: inherit`).
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}

@@ -1,9 +1,9 @@
 {
   "name": "qnsc-landing",
-  "description": "QNSC \u2014 Quy Nhon Semiconductor marketing site (Astro, EN/VI).",
+  "description": "QNSC — Quy Nhon Semiconductor marketing site (Astro, EN/VI).",
   "private": true,
   "type": "module",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",

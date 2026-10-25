@@ -23,13 +23,14 @@ overrides:
   # and pinning one patch across every consumer is how a CI runner ends up without one.
   'sharp@<0.35.4': '>=0.35.4'
   # GHSA-4cwx-7wf7-3272 (CVSS 7.4, cross-user information disclosure and a parse-time
-  # crash from degenerate private cache directives) plus three lower-severity siblings.
-  # Fixed in 7.29.0 on the 7.x line.
+  # crash from degenerate private cache directives) plus three lower-severity siblings,
+  # fixed in 7.29.0, and a later wave fixed in 7.30.1: GHSA-xjj6-f33q-929c (CVSS 7.5),
+  # GHSA-4qv8-2p9j-2685 and GHSA-f72v-6w45-q472 (5.9 each). Floor raised 7.29.0 -> 7.30.1.
   #
   # Dev-only: the sole path is miniflare. Bounded INSIDE the major, the way rova's
   # equivalent entry is — an unbounded floor drags a consumer onto 8.x, whose internals
   # differ, and this tree already resolves an independent undici 8.10.2 that is fine.
-  'undici@>=7.0.0 <7.29.0': '>=7.29.0 <8.0.0'
+  'undici@>=7.0.0 <7.30.1': '>=7.30.1 <8.0.0'
   # GHSA-fxqj-rqcc-2cmp (CVSS 6.3) — incomplete fix of GHSA-6g55-p6wh-862q: an
   # attacker-controlled `sourceMappingURL` is still read. Fixed in 8.5.23.
   #
@@ -46,13 +47,15 @@ overrides:
   'nanoid@>=3.0.0 <3.3.18': '3.3.18'
   # GHSA-5jgf-p345-68v8 and its siblings (CVSS 7.5 each) — host confusion and SSRF in
   # the same URI parser: failed IDN canonicalisation, a backslash authority introducer,
-  # malformed and repeated authority forms, percent-encoded schemes. Fixed in 3.1.6.
+  # malformed and repeated authority forms, percent-encoded schemes. Fixed in 3.1.6; a
+  # later wave (GHSA-333x-w4r6-6crp, GHSA-w74x-v6f9-j3xg, GHSA-wjr9-j795-jxcr,
+  # GHSA-xhq7-xmqj-769h) is fixed in 3.1.9. Floor raised 3.1.6 -> 3.1.9.
   #
   # Dev-only, via ajv. THE UPPER BOUND IS THE POINT: every consumer here declares ^3.x
   # and nothing asks for 4.x, so an unbounded floor would resolve the newest thing that
   # satisfies it and carry the tree into a major nobody declared — which is precisely
   # how rova's own fast-uri override once became the thing tripping its scanner.
-  'fast-uri@<3.1.6': '>=3.1.6 <4.0.0'
+  'fast-uri@<3.1.9': '>=3.1.9 <4.0.0'
   # GHSA-mh99-v99m-4gvg (fixed 5.0.8) and GHSA-rgw5-rvv9-x895 (CVSS 7.5, DoS via
   # unbounded intermediate arrays, fixed 5.0.9 — and it explicitly BYPASSES the earlier
   # mitigation, so 5.0.8 is not a safe floor, only a newer one).

@@ -7,7 +7,8 @@
 #
 # PREREQUISITE: disable Cloudflare's GitHub auto-build for this Pages project so
 # CI is the single source of deploys (no double-deploy). Cloudflare creds come
-# from ORG secrets CLOUDFLARE_API_TOKEN + CLOUDFLARE_ACCOUNT_ID; the Pages
+# from the ORG secret CLOUDFLARE_API_TOKEN + the org variable
+# CLOUDFLARE_ACCOUNT_ID (v1.24.3's reusable reads the variable itself); the Pages
 # project name from the PAGES_PROJECT var (+ optional APP_URL for the
 # post-deploy health check).
 # =============================================================================
@@ -30,7 +31,7 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: quynhonsemiconductor/ci/.github/workflows/web-deploy.yml@de56bff40c5468623aa9e69d1ebe8e638e874bdf # v1.24.2
+    uses: quynhonsemiconductor/ci/.github/workflows/web-deploy.yml@2a85ef7bb3c793edbc9b424ba2abeaed8080aab6 # v1.24.3
     with:
       product: qnsc-landing
       build_command: pnpm build
@@ -40,7 +41,3 @@ jobs:
     # Least-privilege: pass only what the reusable declares (no `secrets: inherit`).
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      # An account id is an identifier, not a secret: the org publishes it as a VARIABLE
-      # (org vars CLOUDFLARE_ACCOUNT_ID), and secrets.CLOUDFLARE_ACCOUNT_ID does not exist —
-      # it resolved to empty, breaking every deploy.
-      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}

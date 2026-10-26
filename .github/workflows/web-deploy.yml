@@ -30,7 +30,7 @@ jobs:
     permissions:
       contents: read
       packages: read
-    uses: quynhonsemiconductor/ci/.github/workflows/web-deploy.yml@691668f7a1bd4f4a3416f9224ae7ff7ebe831a3a # v1.23.0
+    uses: quynhonsemiconductor/ci/.github/workflows/web-deploy.yml@de56bff40c5468623aa9e69d1ebe8e638e874bdf # v1.24.2
     with:
       product: qnsc-landing
       build_command: pnpm build
@@ -40,5 +40,7 @@ jobs:
     # Least-privilege: pass only what the reusable declares (no `secrets: inherit`).
     secrets:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-      SLACK_DEPLOY_WEBHOOK: ${{ secrets.SLACK_DEPLOY_WEBHOOK }}
+      # An account id is an identifier, not a secret: the org publishes it as a VARIABLE
+      # (org vars CLOUDFLARE_ACCOUNT_ID), and secrets.CLOUDFLARE_ACCOUNT_ID does not exist —
+      # it resolved to empty, breaking every deploy.
+      CLOUDFLARE_ACCOUNT_ID: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}

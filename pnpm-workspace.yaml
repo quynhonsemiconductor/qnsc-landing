@@ -70,3 +70,8 @@ overrides:
 allowBuilds:
   esbuild: true
   sharp: true
+  # wrangler's tree also pulls workerd (miniflare's runtime); its postinstall only
+  # verifies/links the platform binary that a static Pages build never runs. Recorded
+  # before pnpm aborts the install with ERR_PNPM_IGNORED_BUILDS the way it did for
+  # rova's sharp on the pnpm 11.28.8 bump (mirror of opshub#495).
+  workerd: true

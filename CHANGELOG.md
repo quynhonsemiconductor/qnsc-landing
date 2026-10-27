@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.1.3](https://github.com/quynhonsemiconductor/qnsc-landing/compare/qnsc-landingv0.1.2...qnsc-landingv0.1.3) (2026-10-27)
+
+
+### 🐛 Bug Fixes
+
+* **ci:** feed web-deploy the Cloudflare account id from the org variable ([#7](https://github.com/quynhonsemiconductor/qnsc-landing/issues/7)) ([567eacc](https://github.com/quynhonsemiconductor/qnsc-landing/commit/567eacc98e69d92d7e6e8e0bebf621e3c6bbdfff))
+* **ci:** sweep callers to ci v1.24.3; record workerd's build decision ([#8](https://github.com/quynhonsemiconductor/qnsc-landing/issues/8)) ([9e38b1a](https://github.com/quynhonsemiconductor/qnsc-landing/commit/9e38b1ae8228bb66188b24ca4cb8800bdf3fa01a))
+* **deps:** raise undici and fast-uri override floors to clear osv findings ([#5](https://github.com/quynhonsemiconductor/qnsc-landing/issues/5)) ([cae10df](https://github.com/quynhonsemiconductor/qnsc-landing/commit/cae10dfef181af404657ff621c13fa09e3fc00d5))
+* **release:** pass QNSC_AUTOMATION_PRIVATE_KEY to the release reusable ([#9](https://github.com/quynhonsemiconductor/qnsc-landing/issues/9)) ([9859dbe](https://github.com/quynhonsemiconductor/qnsc-landing/commit/9859dbe2d491879f9536a3c7153e4a2677d23148))
+
 ## [0.1.2](https://github.com/quynhonsemiconductor/qnsc-landing/compare/qnsc-landingv0.1.1...qnsc-landingv0.1.2) (2026-10-22)
 
 

@@ -25,7 +25,10 @@ permissions:
 jobs:
   # Delegate to the shared reusable so pinning/behaviour stays in one place
   # (quynhonsemiconductor/ci). config_file defaults to release-please-config.json.
-  # No secrets passed: this repo has no QNSC_AUTOMATION_PRIVATE_KEY, so the reusable
-  # falls back to github.token (avoids `secrets: inherit` least-privilege risk).
+  # Org secrets do not cross into a reusable workflow unless passed explicitly,
+  # so the token goes unauthenticated without this (release PRs fell back to
+  # github-actions[bot]).
   release:
     uses: quynhonsemiconductor/ci/.github/workflows/release-please.yml@2a85ef7bb3c793edbc9b424ba2abeaed8080aab6 # v1.24.3
+    secrets:
+      QNSC_AUTOMATION_PRIVATE_KEY: ${{ secrets.QNSC_AUTOMATION_PRIVATE_KEY }}

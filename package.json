@@ -3,7 +3,7 @@
   "description": "QNSC — Quy Nhon Semiconductor marketing site (Astro, EN/VI).",
   "private": true,
   "type": "module",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "UNLICENSED",
   "repository": {
     "type": "git",

@@ -49,11 +49,5 @@
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.63.0",
     "wrangler": "^4.110.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "minimatch@>=10.0.0 <11.0.0": "11.0.4",
-      "undici@>=7.0.0 <8.0.0": "7.30.1"
-    }
   }
 }

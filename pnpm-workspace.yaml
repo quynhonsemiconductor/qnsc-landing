@@ -63,6 +63,11 @@ overrides:
   # Dev-only, via minimatch. A leaf utility with no API surface to speak of, and the
   # advisory range spans every published major, so the whole tree moves to one copy.
   'brace-expansion': '5.0.12'
+  # GHSA-g3hv-75wg-m249 / CVE-2026-118764 (CVSS 6.9) — globparts amplification in
+  # firstPhasePreProcess when optimizationLevel >= 2. Fixed only in 11.0.1, and every
+  # consumer here (eslint, @eslint/config-array, @typescript-eslint/typescript-estree)
+  # still declares ^10.2.x. Bounded below 12 so the next major does not arrive silently.
+  'minimatch@>=10.0.0 <11.0.0': '>=11.0.1 <12.0.0'
 
 # pnpm 11 refuses to run a package's postinstall unless it is named here, and exits 1
 # with ERR_PNPM_IGNORED_BUILDS if the decision is unmade — which blocks every script in

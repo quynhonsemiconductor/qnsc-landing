@@ -1,6 +1,6 @@
 {
   "name": "qnsc-landing",
-  "description": "QNSC — Quy Nhon Semiconductor marketing site (Astro, EN/VI).",
+  "description": "QNSC \u2014 Quy Nhon Semiconductor marketing site (Astro, EN/VI).",
   "private": true,
   "type": "module",
   "version": "0.1.3",
@@ -49,5 +49,10 @@
     "typescript": "~6.0.3",
     "typescript-eslint": "^8.63.0",
     "wrangler": "^4.110.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "minimatch@>=10.0.0 <11.0.0": "11.0.4"
+    }
   }
 }
